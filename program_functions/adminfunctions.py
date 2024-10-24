@@ -25,6 +25,7 @@ def initialize_store():
                     ]
 
         deku_collection.insert_many(document_list)
+        log_collection.insert_one( { "log" : "Deku Store inventory was INSERTed.", "when": datetime.now() } )
 
 def choose_user_editing():
     whether_edit_delete = input("\033[1m" + "Would you like to (e)dit or (d)elete a customer account? Or (n)ot? " + "\033[0m")
@@ -124,7 +125,7 @@ def admin_delete_item():
         return
     
 def admin_output_logs():
-    output_logs = input("\033[1m" + "Would you like to (o)utput logs Or (n)ot? " + "\033[0m")
+    output_logs = input("\033[1m" + "Would you like to (o)utput logs, (d)elete all logs? Or (n)ot? " + "\033[0m")
     match (output_logs.strip().lower()[0]):
         case('n'):
             pass
@@ -132,3 +133,6 @@ def admin_output_logs():
             all_logs = log_collection.find()
             for log in all_logs:
                 print(f"{log['log']:64}" , " | recorded: " + str(log["when"]))
+        case('d'):
+            log_collection.delete_many({})
+            log_collection.insert_one( { "log" : "All logs were DELETEd. The logs are now empty.", "when": datetime.now() } )

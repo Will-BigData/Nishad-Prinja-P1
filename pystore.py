@@ -28,7 +28,7 @@ def main():
 
         if (admin_logged_in):
             while(True):
-                admin_menu = input("\033[1m" + "Would you like to (1) create the store, (2) manage user accounts, (3) manage the Deku Store, (4) output the log outputs? Or (e)xit? " + "\033[0m")
+                admin_menu = input("\033[1m" + "Would you like to (1) create the store, (2) manage user accounts, (3) manage the Deku Store, (4) output or delete the log outputs? Or (e)xit? " + "\033[0m")
                 match(admin_menu):
                     case("1"):
                         program_functions.whether_create_store()

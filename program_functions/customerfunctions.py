@@ -4,7 +4,7 @@ from datetime import datetime
 
 def customer_options(customer_username):
     while(True):
-        whether_collect_buy = input("\033[1m" + "Would you like to (s)cavenge for more rupees or (b)uy items? Or (e)xit? " + "\033[0m")
+        whether_collect_buy = input("\033[1m" + "Would you like to (s)cavenge for more rupees or (v)isit the store? Or (e)xit? " + "\033[0m")
         match (whether_collect_buy.strip().lower()[0]):
             case('s'):
                 while(True):
@@ -21,7 +21,7 @@ def customer_options(customer_username):
                             continue
                         case('e'):
                             break
-            case('b'):
+            case('v'):
                     buy_sell_options(customer_username)
             case('e'):
                 return
@@ -52,7 +52,7 @@ def kill_enemy(customer_username):
     log_collection.insert_one( { "log" : f"QEURIEd for current amount in wallet after KILLING ENEMY!", "when": datetime.now() } )
     enemy_type = ["Amy", "Anubis", "Armos", "Baby Dodongo", "Bari", "Beamos", "Beth", "Big Blade", "Big Deku Baba", "Big Poe", "Big Skulltula", "Biri", "Blade Trap", "Blue Bubble", "Blue Tektite", "Boulder", "Business Scrub", "Club Moblin", "Deku Baba", "Deku Scrub", "Dinolfos", "Dodongo", "Trap Door", "Fire Eye", "Fire Keese", "Flame Wall", "Flat", "Floor Spikes", "Floormaster", "Flying Pot", "Crazy Floor Tile", "Freezard", "Gerudo Guard", "Gibdo", "Gohma Larva", "Gold Skulltula", "Green Bubble", "Guay", "Guillotine", "Ice Keese", "Ice Scythe", "Joelle", "Keese", "Leever", "Like Like", "Lizalfos", "Mad Scrub", "Magma Bomb", "Meg", "Moblin", "Octorok", "Parasitic Tentacle", "Peahat", "Peahat Larva", "Poe", "ReDead", "Red Bubble", "Red Tektite", "Shabom", "Sharp", "Shell Blade", "Skulltula", "Skullwalltula", "Skull Kid", "Spike", "Spiked-Log Trap", "Stalchild", "Stalfos", "Stinger", "Tailpasaran", "Torch Slug", "Toxic Water", "Wallmaster", "White Bubble", "White Wolfos", "Wolfos"]
     your_enemy = random.choice(enemy_type)
-    print(f"You killed an enemy! The enemy you fought was the {your_enemy}.")
+    print("You killed an enemy! The enemy you fought was the " + "\033[4m" + f"{your_enemy}" + "\033[0m" + ".")
     print(f"{customer_username} your wallet increased by {kill_enemy} rupees and is now {current_wallet[0]} rupees full!")
 
 def buy_sell_options(customer_username):
